@@ -1,33 +1,33 @@
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import React from "react";
-import App from "./App"
-// import App1 from "./App1"
-import { BrowserRouter } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import Home from "./Home";
+import About from "./About";
+import Footer from "./Footer";
+import App from "./App";
+import Nav from "./Nav";
 import "./index.css";
+import Signin from "./Signin";
+import Sign from "./Sign";
 
-ReactDOM.render(
-  <BrowserRouter>
-    <Home />,
-     <App />,
-     <App1 />  
-  </BrowserRouter>,
-  document.getElementById("root")
+const root=ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(
+  <Router>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/App" element={<Navigate replace to="/About" />} />
+      <Route path="/About" element={<About />} />
+      <Route path="/Nav" element={<Nav />}/>
+      <Route path="/Footer" element={<Footer />} />
+      <Route path="/App" element={<App />}/>
+      <Route path="/Signin" element={<Signin />}/>
+      <Route path="/Sign" element={<Sign />}/>
+    </Routes>
+  </Router>
 );
-
-function Home() {
-  return (
-    <div>
-      <h1>this is first pages</h1>
-    </div>
-  );
-}
-
-function App1(){
-  return (
-      <>
-      <h1>helli vivek this is another component</h1>
-      <h4>first you have to create component then you import  in index.js those file are direct with index.html</h4>
-      </>
-
-  )
-}
